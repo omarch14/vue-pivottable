@@ -349,6 +349,9 @@ const TSVExportRenderer = {
         const v = pivotData.getAggregator(r, c).value()
         row.push(v || '')
       })
+      for (let key in row) {
+        row[key] = !row[key] || isNaN(row[key]) ? row[key] : row[key].toFixed(2)
+      }
       return row
     })
     result.unshift(headerRow)
